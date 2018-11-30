@@ -65,8 +65,36 @@ function playSound(name, options){
 
 
 
+//imm-text-one-line-truncated ng-binding
 
+function buscarTransferenciaPorBanco(bancox){
 
+operaciones=document.querySelectorAll('.imm-text-xsmall.ng-binding');
+bancosTodos=document.querySelectorAll('.imm-text-one-line-truncated.ng-binding');
+
+	if(operaciones.length>0){
+
+		operaciones.forEach(function(element,k) {
+		  var txt=element.innerHTML.toString().toLowerCase();
+		  var coloFondo="#66ffff";
+
+		  if (txt.indexOf("transferencia bancaria") > -1)
+		  {
+			  console.log(bancosTodos[k]);
+		  	/* IN CHECK
+			if(bancox==bancosTodos[k].innerHTML.toString().toLowerCase())
+			{
+				console.log('#### ---> '+txt+' '+k);
+		  		playSound('coin');
+		  		operaciones[k].parentElement.parentElement.parentElement.parentElement.parentElement.style.backgroundColor = coloFondo;
+		  	
+			}*/
+		  }
+		  
+		});
+	}
+	console.log('..::buscarTransferenciaPorBanco ('+bancox+') ::..');
+}
 
 function buscarPayoneer(){
 
@@ -90,4 +118,4 @@ operaciones=document.querySelectorAll('.imm-text-xsmall.ng-binding');
 	console.log('..::buscarPayoneer::..');
 }
 
-setInterval( buscarPayoneer ,5000);
+setInterval( buscarTransferenciaPorBanco('banesco') ,5000);
